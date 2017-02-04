@@ -29,8 +29,8 @@ main =
 splash =
   div [ class "splash" ]
     [ div [ size 120 16 ] [ text "elm" ]
-    , div [ size 26 8 ] [ text "A delightful language for reliable webapps." ]
-    , div [ size 16 8 ] [ text "Generate JavaScript with great performance and no runtime exceptions." ]
+    , div [ size 26 8 ] [ text "신뢰할 수 있는 웹 어플리케이션을 위한 흥미로운 언어" ]
+    , div [ size 16 8 ] [ text "런타임 예외 없이, 좋은 성능의 자바스크립트 코드를 만들어보세요." ]
     , br [] []
     , getStarted
     ]
@@ -50,8 +50,8 @@ size height padding =
 getStarted : Html msg
 getStarted =
   div [ class "get-started" ]
-    [ a [ href "/try" ] [ text "Try Online" ]
-    , a [ href "http://guide.elm-lang.org/install.html" ] [ text "Install" ]
+    [ a [ href "/try" ] [ text "온라인으로 사용해보기" ]
+    , a [ href "http://guide.elm-lang.org/install.html" ] [ text "설치" ]
     ]
 
 
@@ -67,7 +67,7 @@ getStartedSection =
 featureSection : Html msg
 featureSection =
   section [class "home-section"]
-    [ h1 [] [text "Features"]
+    [ h1 [] [text "특징"]
     , ul [class "features"] (List.map viewFeature features)
     ]
 
@@ -103,29 +103,29 @@ viewFeature feature =
 
 features : List (Feature msg)
 features =
-  [ Feature "JavaScript Interop" 100 "/assets/home/embed.png" "/blog/how-to-use-elm-at-work" <|
-      [ text "Elm compiles to JavaScript, so trying out Elm is easy. Convert a small part of your app to Elm and "
-      , a [href "/blog/how-to-use-elm-at-work"] [text "embed it in JS"]
-      , text ". No full rewrites, no huge time investment. More about that "
-      , a [href "http://guide.elm-lang.org/interop/"] [text "here"]
-      , text "."
+  [ Feature "JavaScript와 상호작용" 100 "/assets/home/embed.png" "/blog/how-to-use-elm-at-work" <|
+      [ text "Elm은 JavaScript로 컴파일 되기 때문에 Elm을 시도해보는 건 쉬워요. 여러분이 만든 앱의 작은 부분들을 Elm으로 바꾼 뒤 "
+      , a [href "/blog/how-to-use-elm-at-work"] [text "JS코드에 넣어 보세요"]
+      , text ". 모든 코드를 재작성하느라 많은 시간을 사용할 필요가 없어요. 자세한 것은"
+      , a [href "http://guide.elm-lang.org/interop/"] [text "여기"]
+      , text "를 참고하세요."
       ]
-  , Feature "No Runtime Exceptions" 200 "/assets/home/errors.png" "/blog/compilers-as-assistants" <|
-      [ text "Unlike hand-written JavaScript, Elm code does not produce runtime exceptions in practice. Instead, Elm uses type inference to detect problems during compilation and give "
-      , a [href "/blog/compilers-as-assistants"] [text "friendly hints"]
-      , text ". This way problems never make it to your users. NoRedInk has 36k lines of Elm, and after more than a year in production, it still has not produced a single runtime exception."
+  , Feature "런타임 예외가 없어요" 200 "/assets/home/errors.png" "/blog/compilers-as-assistants" <|
+      [ text "손수 작성된 자바스크립트와는 달리, Elm은 실제로 런타임 예외를 제공하지 않아요. 대신에 Elm은 컴파일 중 타입 추론을 통해 문제를 발견하고  "
+      , a [href "/blog/compilers-as-assistants"] [text "친화적으로 힌트를 알려주죠"]
+      , text ". 이 방법은 사용자들에게 절대로 문제가 생기지 않게 해줍니다. NoRedInk는 3만6천줄에 달하는 Elm코드를 사용했고 1년동안 실제 서비스에서 사용해왔습니다. 그 후 아직까지도 단 한번의 런타임 예외를 발생시킨 적이 없답니다."
       ]
-  , Feature "Great Performance" 320 "/assets/home/benchmark.png" "/blog/blazing-fast-html-round-two" <|
-      [ text "Elm has its own virtual DOM implementation, designed for simplicity and speed. All values are immutable in Elm, and "
-      , a [href "/blog/blazing-fast-html-round-two"] [text "the benchmarks"]
-      , text " show that this helps us generate particularly fast JavaScript code."
+  , Feature "훌륭한 성능" 320 "/assets/home/benchmark.png" "/blog/blazing-fast-html-round-two" <|
+      [ text "Elm은 간단하면서도 빠르게 끔 설계된 virtual DOM 구현체를 가졌답니다. Elm에서 모든 값들은 불변형이며, 특히 빠른 Javascript 코드를 생성할 때 도움이 된다는 걸 "
+      , a [href "/blog/blazing-fast-html-round-two"] [text "벤치마크에서도"]
+      , text " 확인 할 수 있죠."
       ]
-  , Feature "Enforced Semantic Versioning" 280 "/assets/home/semver.png" "http://package.elm-lang.org" <|
-      [ text "Elm can detect all API changes automatically thanks to its type system. We use that information to force everything in "
-      , a [href "http://package.elm-lang.org"] [text "our package catalog"]
-      , text " to follow "
-      , a [href "https://github.com/elm-lang/elm-package/#version-rules"] [text "semantic versioning"]
-      , text " precisely. No more surprises in PATCH releases!"
+  , Feature "강제적인 유의적 버전" 280 "/assets/home/semver.png" "http://package.elm-lang.org" <|
+      [ text "Elm은 타입시스템 덕분에 자동적으로 모든 API의 변화를 감지할 수 있죠. 이제 그 정보를 통해 "
+      , a [href "http://package.elm-lang.org"] [text "우리의 패키지 카탈로그의"]
+      , text " 모든 내용에 대하여 강제적으로 유의적 버전을 준수하게 만들 수 있어요. 정확한 "
+      , a [href "https://github.com/elm-lang/elm-package/#version-rules"] [text "유의적 버전으로 "]
+      , text "패치 릴리즈시에 끔찍한 일들이 사라지죠!"
       ]
   ]
 
@@ -137,15 +137,15 @@ features =
 exampleSection : Html msg
 exampleSection =
   section [class "home-section"]
-    [ h1 [] [text "Examples"]
+    [ h1 [] [text "예제"]
     , p [class "home-paragraph", style [("margin-bottom","40px")] ]
-        [ text "Learning by example is important, so we have some "
-        , a [href "/examples"] [text "simple"]
-        , text " and "
-        , a [href "http://builtwithelm.co/"] [text "elaborate"]
-        , text " examples to help you as you move through "
-        , a [href "http://guide.elm-lang.org/"] [text "An Introduction to Elm"]
-        , text ". Here are some nice ones!"
+        [ text "예제를 통해 배우는 것들은 중요합니다. 그래서 우리는 한번"
+        , a [href "/examples"] [text "간단한"]
+        , text " 예제와 "
+        , a [href "http://builtwithelm.co/"] [text "정교한"]
+        , text " 예제들을 "
+        , a [href "http://guide.elm-lang.org/"] [text "Elm 소개"]
+        , text "에 준비했어요.. 여기 멋진 예제들을 확인해보세요!"
         ]
     , fluidList 400 2 examples
     ]
@@ -229,17 +229,17 @@ fluidList itemWidth maxColumns itemList =
 userSection : Html msg
 userSection =
   section [class "home-section"]
-    [ h1 [] [text "Featured Users"]
+    [ h1 [] [text "Elm을 사용하는 분들"]
     , p [class "home-paragraph"]
-        [ text "Definitely check out the links for "
+        [ text "다음 링크들을 통해 "
         , a [href "http://tech.noredink.com/post/129641182738/building-a-live-validated-signup-form-in-elm"] [text "NoRedInk"]
         , text ", "
         , a [href "http://www.gizra.com/content/thinking-choosing-elm/"] [text "Gizra"]
-        , text ", and "
+        , text ", 그리고 "
         , a [href "http://futurice.com/blog/elm-in-the-real-world"] [text "Futurice"]
-        , text " to learn more about how and why they are using Elm. If you want to join them and use Elm at work, definitely follow "
-        , a [href "/blog/how-to-use-elm-at-work"] [text "this advice"]
-        , text " and do it gradually. Elm is all about reducing risk, even in adoption!"
+        , text "와 같은 기업들이 어떤식으로 사용하는지와 왜 Elm을 사용하는지 확실하게 알아보세요. 여러분이 그들과 함께하고 싶고, Elm을 업무에서 사용하고 싶다면    If you want to join them and use Elm at work, definitely follow "
+        , a [href "/blog/how-to-use-elm-at-work"] [text "이 조언"]
+        , text "을 보시고 점차적으로 따라해보세요. Elm을 선택하는 것에 대한 리스크도 줄여 줄 것입니다."
         ]
     , fluidList 200 3
         [ company
