@@ -113,7 +113,7 @@ features =
   , Feature "런타임 예외가 없어요" 200 "/assets/home/errors.png" "/blog/compilers-as-assistants" <|
       [ text "손수 작성된 자바스크립트와는 달리, Elm은 실제로 런타임 예외를 제공하지 않아요. 대신에 Elm은 컴파일 중 타입 추론을 통해 문제를 발견하고  "
       , a [href "/blog/compilers-as-assistants"] [text "친화적으로 힌트를 알려주죠"]
-      , text ". 이 방법은 사용자들에게 절대로 문제가 생기지 않게 해줍니다. NoRedInk는 3만6천줄에 달하는 Elm코드를 사용했고 1년동안 실제 서비스에서 사용해왔습니다. 그 후 아직까지도 단 한번의 런타임 예외를 발생시킨 적이 없답니다."
+      , text ". 이 방법은 사용자들에게 절대로 문제가 생기지 않게 해줍니다. NoRedInk는 8만줄이 넘는 Elm코드를 사용했고 1년동안 실제 서비스에서 사용해왔습니다. 그 후 아직까지도 단 한번의 런타임 예외를 발생시킨 적이 없답니다."
       ]
   , Feature "훌륭한 성능" 320 "/assets/home/benchmark.png" "/blog/blazing-fast-html-round-two" <|
       [ text "Elm은 간단하면서도 빠르게 끔 설계된 virtual DOM 구현체를 가졌답니다. Elm에서 모든 값들은 불변형이며, 특히 빠른 Javascript 코드를 생성할 때 도움이 된다는 걸 "
@@ -230,16 +230,31 @@ userSection : Html msg
 userSection =
   section [class "home-section"]
     [ h1 [] [text "Elm을 사용하는 분들"]
-    , p [class "home-paragraph"]
-        [ text "다음 링크들을 통해 "
-        , a [href "http://tech.noredink.com/post/129641182738/building-a-live-validated-signup-form-in-elm"] [text "NoRedInk"]
-        , text ", "
-        , a [href "http://www.gizra.com/content/thinking-choosing-elm/"] [text "Gizra"]
-        , text ", 그리고 "
-        , a [href "http://futurice.com/blog/elm-in-the-real-world"] [text "Futurice"]
-        , text "와 같은 기업들이 어떤식으로 사용하는지와 왜 Elm을 사용하는지 확실하게 알아보세요. 여러분이 그들과 함께하고 싶고, Elm을 업무에서 사용하고 싶다면    If you want to join them and use Elm at work, definitely follow "
-        , a [href "/blog/how-to-use-elm-at-work"] [text "이 조언"]
-        , text "을 보시고 점차적으로 따라해보세요. Elm을 선택하는 것에 대한 리스크도 줄여 줄 것입니다."
+    , div [ class "featured-user" ]
+        [ div [ class "quote" ]
+            [ p [] [ text "We’ve had zero run-time failures, the filesize is ridiculously small, and it runs faster than anything else in our code base. We’ve also had fewer bugs... " ]
+            , p [] [ text "To sum it up, our manager has mandated that all new code be written in Elm." ]
+            ]
+        , div [ class "attribution" ]
+            [ div [ class "attribution-author" ]
+                [ p [] [ text "Jeff Schomay" ]
+                , p [] [ a [ href "https://www.pivotaltracker.com/blog/Elm-pivotal-tracker/" ] [ text "Pivotal Tracker Blog" ] ]
+                ]
+            , a [ class "attribution-logo"
+                , href "https://www.pivotaltracker.com"
+                ]
+                [ div
+                    [ style
+                        [ "width" => "200px"
+                        , "height" => "100px"
+                        , "background-image" => ("url('" ++ toLogoSrc "PivotalTracker" "svg" ++ "')")
+                        , "background-repeat" => "no-repeat"
+                        , "background-position" => "center"
+                        ]
+                    ]
+                    []
+                ]
+            ]
         ]
     , fluidList 200 3
         [ company
@@ -263,41 +278,60 @@ userSection =
             "http://www.gizra.com/content/thinking-choosing-elm/"
             "png"
         , company
+            "Prezi"
+            "https://prezi.com/"
+            "png"
+        , company
             "TruQu"
             "https://truqu.com/"
             "png"
         , company
-            "Prezi"
-            "https://prezi.com/"
+            "CircuitHub"
+            "https://circuithub.com/"
             "png"
         , company
             "Beautiful Destinations"
             "http://www.beautifuldestinations.com/"
             "svg"
+        , company
+            "Hearken"
+            "https://www.wearehearken.com/"
+            "png"
         ]
     ]
 
 
+company : String -> String -> String -> List (Html msg)
 company name website extension =
+  [ toLogo name website extension ]
+
+
+toLogo : String -> String -> String -> Html msg
+toLogo name website extension =
+  let
+    imgSrc =
+      toLogoSrc name extension
+  in
+    a [ href website ]
+      [ div
+          [ style
+              [ "width" => "200px"
+              , "height" => "100px"
+              , "background-image" => ("url('" ++ imgSrc ++ "')")
+              , "background-repeat" => "no-repeat"
+              , "background-position" => "center"
+              ]
+          ]
+          []
+      ]
+
+
+toLogoSrc : String -> String -> String
+toLogoSrc name extension =
   let
     lowerName =
       String.toLower name
-
-    imgSrc =
-      "/assets/logos/"
-      ++ String.map (\c -> if c == ' ' then '-' else c) lowerName
-      ++ "." ++ extension
   in
-    [ a [ href website ]
-        [ div
-            [ style
-                [ "width" => "200px"
-                , "height" => "100px"
-                , "background-image" => ("url('" ++ imgSrc ++ "')")
-                , "background-repeat" => "no-repeat"
-                , "background-position" => "center"
-                ]
-            ]
-            []
-        ]
-    ]
+    "/assets/logos/"
+    ++ String.map (\c -> if c == ' ' then '-' else c) lowerName
+    ++ "." ++ extension
