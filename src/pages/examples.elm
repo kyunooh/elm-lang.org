@@ -21,11 +21,10 @@ main =
 
 content = """
 
-# Examples
+# 예제
 
-Playing with small examples is a great way to get comfortable with Elm!
-Think of them as a supplement to resources like the [syntax reference][syntax]
-and [guide.elm-lang.org][guide].
+작은 예제들을 통해 편안하게 Elm을 익혀보세요.
+이것들은 [문법 레퍼런스][syntax]나 [Elm 가이드][guide]의 보조 자료로 사용하실 수 있습니다.
 
 [guide]: https://guide.elm-lang.org/
 [syntax]: /docs/syntax
