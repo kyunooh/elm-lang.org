@@ -139,13 +139,13 @@ exampleSection =
   section [class "home-section"]
     [ h1 [] [text "예제"]
     , p [class "home-paragraph", style [("margin-bottom","40px")] ]
-        [ text "예제를 통해 배우는 것들은 중요합니다. 그래서 우리는 한번"
+        [ text "예제를 통해 배우는 것들은 중요합니다. 그래서 "
         , a [href "/examples"] [text "간단한"]
         , text " 예제와 "
         , a [href "http://builtwithelm.co/"] [text "정교한"]
         , text " 예제들을 "
         , a [href "http://guide.elm-lang.org/"] [text "Elm 소개"]
-        , text "에 준비했어요.. 여기 멋진 예제들을 확인해보세요!"
+        , text "에 준비했어요. 여기 멋진 예제들을 확인해보세요!"
         ]
     , fluidList 400 2 examples
     ]
@@ -232,8 +232,8 @@ userSection =
     [ h1 [] [text "Elm을 사용하는 분들"]
     , div [ class "featured-user" ]
         [ div [ class "quote" ]
-            [ p [] [ text "우리는 한번도 런타임 중 실패를 겪은 적이 없고, 파일 크기는 우스울정도로 작으며, 우리의 코드 베이스에서 다른 어떤 것보다도 빠르게 실행됩니다. 게다가 버그도 적어졌죠..." ]
-            , p [] [ text "요약하자면, 우리의 관리자는 모든 새로운 코드를 Elm으로 작성하였습니다." ]
+            [ p [] [ text "한번도 런타임 중 실패를 겪은 적이 없고, 파일 크기는 우스울정도로 작으며, 우리의 코드 베이스에서 다른 어떤 것보다도 빠르게 실행됩니다. 게다가 버그도 적어졌죠..." ]
+            , p [] [ text "요약하자면, 모든 새로운 코드를 Elm으로 작성하였습니다." ]
             ]
         , div [ class "attribution" ]
             [ div [ class "attribution-author" ]
