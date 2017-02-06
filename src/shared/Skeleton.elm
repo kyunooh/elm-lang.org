@@ -2,6 +2,7 @@ module Skeleton exposing (skeleton)
 
 import Html exposing (..)
 import Html.Attributes exposing (..)
+import Tuple exposing (first, second)
 
 
 (=>) = (,)
@@ -11,10 +12,7 @@ skeleton tabName content =
   div []
     (header tabName :: content ++ [footer])
 
-
-
 -- HEADER
-
 
 header name =
   div [ id "tabs" ]
@@ -27,16 +25,19 @@ header name =
         ]
         [ img [ src "/assets/logo.svg", style [ "width" => "24px" ] ] []
         ]
-    , ul [] (List.map (tab name) [ "examples", "docs", "community", "blog" ])
+    , ul [] (List.map (tab name) [ ("examples", "예제"), ("docs", "문서"), ("community", "커뮤니티"), ("blog", "블로그") ])
     ]
+
+
+
 
 
 tab currentName name =
   li []
-    [ a [ classList [ "tab" => True, "current" => (currentName == name) ]
-        , href ("/" ++ name)
+    [ a [ classList [ "tab" => True, "current" => (currentName == first name ) ]
+        , href ("/" ++ first name)
         ]
-        [ text name ]
+        [ text (second name) ]
     ]
 
 
